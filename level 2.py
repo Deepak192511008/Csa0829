@@ -75,6 +75,64 @@ m=(max(d.values()))
 for i in d:
     if d[i]==m:
         print("number",i,"has occured maximum =",m)
-#from 7
+        
+'''First and Last Position of Target
+Given a sorted array, find the starting and ending index of a target value.'''
+nums = [5, 7, 7, 8, 8, 10]
+target = 8
 
+if target in nums:
+    first = nums.index(target)
+    last = len(nums) - 1 - nums[::-1].index(target)
+else:
+    first = last = -1
+print([first, last])
 
+'''Rotated Sorted Array – Find Minimum
+An array sorted in ascending order is rotated. Find the minimum element.'''
+arr = eval(input("Enter array elements: "))
+k = int(input("Enter rotation count: "))
+k = k % len(arr)          
+rotated = arr[k:] + arr[:k]
+print("Rotated array:", rotated)
+print("Minimum element:", min(rotated))
+
+'''Two Sum in Sorted Array (1-Indexed)
+Find two numbers such that they add up to a target.'''
+
+numbers = [2, 7, 11, 15]
+target = 9
+for i in range(len(numbers)):
+    for j in range(i + 1, len(numbers)):
+        if numbers[i] + numbers[j] == target:
+            print([i + 1, j + 1])  # 1-indexed
+            break
+    else:
+        continue
+    break
+
+# Matrix multiplication
+import numpy as np
+A = np.array([[1, 2],[3, 4]])
+B = np.array([[5, 6],[7, 8]])
+result =  A @ B
+print(result)
+
+Remove K Digits to Form Smallest Number
+
+Full Question:
+Given a string number, remove k digits to get the smallest possible number.
+num = "4322119"
+k = 3
+l = list(num)  
+
+for _ in range(k):
+    
+    max_digit = max(l)
+    idx = l.index(max_digit)
+    l.pop(idx)
+
+# Join digits and remove leading zeros
+result = ''.join(l).lstrip('0')
+
+print(result if result else "0")
