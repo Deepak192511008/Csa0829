@@ -10,6 +10,7 @@ else:
     count = 0
 
 print(count)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #You are climbing a staircase with n steps. Each time you can climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 # Number of ways to climb stairs (Fibonacci)
@@ -21,6 +22,7 @@ else:
     for _ in range(3, n + 1):
         a, b = b, a + b
     print(b)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Job Assignment – Maximum Profit
 #Given arrays difficulty, profit, and worker, return the maximum profit each worker can earn.
@@ -38,6 +40,7 @@ for w in sorted(worker):
         j += 1
     res += max_profit
 print(res)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Print one repeated number in a list.
 # Find one repeated element
@@ -48,6 +51,7 @@ for x in L:
         print(x)
         break
     seen.add(x)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''Search in a Sorted 2D Matrix
 Search a value in an m x n matrix where rows and columns are sorted.'''
@@ -64,6 +68,7 @@ for i in matrix:
     found=True
     break
 print(found)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Find the frequency of each element and display the element with the highest frequency.
 l=[1,2,2,3,2,1,4,3]
@@ -75,7 +80,8 @@ m=(max(d.values()))
 for i in d:
     if d[i]==m:
         print("number",i,"has occured maximum =",m)
-        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     
 '''First and Last Position of Target
 Given a sorted array, find the starting and ending index of a target value.'''
 nums = [5, 7, 7, 8, 8, 10]
@@ -87,6 +93,7 @@ if target in nums:
 else:
     first = last = -1
 print([first, last])
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''Rotated Sorted Array – Find Minimum
 An array sorted in ascending order is rotated. Find the minimum element.'''
@@ -96,6 +103,7 @@ k = k % len(arr)
 rotated = arr[k:] + arr[:k]
 print("Rotated array:", rotated)
 print("Minimum element:", min(rotated))
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''Two Sum in Sorted Array (1-Indexed)
 Find two numbers such that they add up to a target.'''
@@ -110,29 +118,120 @@ for i in range(len(numbers)):
     else:
         continue
     break
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Matrix multiplication
 import numpy as np
 A = np.array([[1, 2],[3, 4]])
 B = np.array([[5, 6],[7, 8]])
 result =  A @ B
+add = A + B
+# Subtraction
+sub = A - B
+print("Addition:\n", add)
+print("Subtraction:\n", sub)
 print(result)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Remove K Digits to Form Smallest Number
-
-Full Question:
-Given a string number, remove k digits to get the smallest possible number.
-num = "4322119"
+'''Remove K Digits to Form Smallest Number
+Given a string number, remove k digits to get the smallest possible number.'''
+num = "1432219"
 k = 3
-l = list(num)  
-
-for _ in range(k):
-    
-    max_digit = max(l)
-    idx = l.index(max_digit)
-    l.pop(idx)
-
-# Join digits and remove leading zeros
-result = ''.join(l).lstrip('0')
-
+num = list(num)  
+while k > 0:
+    removed = False
+    for i in range(len(num) - 1):
+        if num[i] > num[i + 1]:
+            del num[i]   # remove the bigger digit
+            removed = True
+            break
+    # if no digit was removed, remove last digit
+    if not removed:
+        num.pop()
+    k -= 1
+# join and remove leading zeros
+result = ''.join(num).lstrip('0')
 print(result if result else "0")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Sort and print middle element
+arr = [90, -90, 80, 66, 18, 10]
+arr.sort()
+
+mid = len(arr) // 2
+print(arr[mid])
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Intersection of two arrays
+nums1 = [1, 2, 2, 1]
+nums2 = [2, 2,3]
+res = []
+for x in nums1:
+    if x in nums2:
+        res.append(x)
+        nums2.remove(x)
+print(res)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Check anagram
+s1 = "listen"
+s2 = "silent"
+
+if sorted(s1) == sorted(s2):
+    print("Anagram")
+else:
+    print("Not Anagram")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'''Luck or Not (Sum = Product of digits)
+If sum of digits = product of digits → Lucky number.'''
+# Lucky number check
+num = 1412
+
+s = 0
+p = 1
+
+for d in str(num):
+    s += int(d)
+    p *= int(d)
+
+if s == p:
+    print("Yes")
+else:
+    print("No")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Function to find a peak element
+def peak(arr):
+    for i in range(1, len(arr)-1):
+        if arr[i] > arr[i-1] and arr[i] > arr[i+1]:
+            return arr[i]
+
+arr = [1, 3, 20, 4, 1]
+print(peak(arr))
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Rotate array one time to the left.
+arr = eval(input("Enter array elements: "))
+k = int(input("Enter rotation count: "))
+k = k % len(arr)          
+rotated = arr[k:] + arr[:k]
+print("Rotated array:", rotated)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Perfect square check
+import math
+
+n = 16
+root = int(math.sqrt(n))
+
+if root * root == n:
+    print("Perfect Square")
+else:
+    print("Not a Perfect Square")
+
+# Frequency of characters using count()
+s = "engineering"
+a=set(s)
+for ch in a:                 # set removes duplicates
+    print(ch, "->", s.count(ch))  # count() gives frequency
