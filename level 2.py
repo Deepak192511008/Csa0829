@@ -131,27 +131,7 @@ sub = A - B
 print("Addition:\n", add)
 print("Subtraction:\n", sub)
 print(result)
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-'''Remove K Digits to Form Smallest Number
-Given a string number, remove k digits to get the smallest possible number.'''
-num = "1432219"
-k = 3
-num = list(num)  
-while k > 0:
-    removed = False
-    for i in range(len(num) - 1):
-        if num[i] > num[i + 1]:
-            del num[i]   # remove the bigger digit
-            removed = True
-            break
-    # if no digit was removed, remove last digit
-    if not removed:
-        num.pop()
-    k -= 1
-# join and remove leading zeros
-result = ''.join(num).lstrip('0')
-print(result if result else "0")
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Sort and print middle element
@@ -229,9 +209,53 @@ if root * root == n:
     print("Perfect Square")
 else:
     print("Not a Perfect Square")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Frequency of characters using count()
 s = "engineering"
 a=set(s)
 for ch in a:                 # set removes duplicates
     print(ch, "->", s.count(ch))  # count() gives frequency
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''In daily share trading, a buyer buys shares in the morning and sells them on the same day. 
+If the trader is allowed to make the most two transitions in a day, where the second transition
+can only start after the first one is completed, gain stock price throughout the day, 
+find out the maximum profit the share trader would have had.'''
+
+prices = [10, 22, 5, 75, 65, 80]
+
+buy1 = float('inf')
+buy2 = float('inf')
+profit1 = 0
+profit2 = 0
+
+for i in prices:
+    buy1 = min(buy1, i)
+    profit1 = max(profit1, i - buy1)
+    
+    buy2 = min(buy2, i - profit1)
+    profit2 = max(profit2, i - buy2)
+print("Maximum Profit:", profit2)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'''Remove K Digits to Form Smallest Number
+Given a string number, remove k digits to get the smallest possible number.'''
+num = "1432219"
+k = 3
+
+num = list(num)
+
+for _ in range(k):
+    removed = False
+    for i in range(len(num) - 1):
+        if num[i] > num[i + 1]:
+            num.pop(i)        # remove this digit
+            removed = True
+            break
+    if not removed:
+        num.pop()             # remove last digit if no peak found
+
+result = "".join(num).lstrip("0")
+print(result if result else "0")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
