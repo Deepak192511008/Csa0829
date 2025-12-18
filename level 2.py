@@ -28,16 +28,18 @@ else:
 difficulty = [2, 4, 6, 8, 10]
 profit = [10, 20, 30, 40, 50]
 worker = [4, 5, 6, 7]
-jobs = sorted(zip(difficulty, profit))
-max_profit = 0
-res = 0
-j = 0
-for w in sorted(worker):
-    while j < len(jobs) and jobs[j][0] <= w:
-        max_profit = max(max_profit, jobs[j][1])
-        j += 1
-    res += max_profit
-print(res)
+jobs = list(zip(difficulty, profit))
+print(jobs)
+total_profit = 0
+for w in worker:                 # for each worker
+    best = 0
+    for d, p in jobs:            # check all jobs
+        if d <= w:               # worker can do this job
+            if p > best:
+                best = p
+    total_profit += best         # add best profit
+print(total_profit)
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Print one repeated number in a list.
