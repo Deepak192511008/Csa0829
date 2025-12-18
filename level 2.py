@@ -1,14 +1,12 @@
-#Return the number of perfect square numbers between low and high (inclusive).
-import math
+# Count perfect squares between low and high
 low = 1
 high = 10
-start = math.ceil(math.sqrt(low))
-end = math.floor(math.sqrt(high))
-if end >= start:
-    count = end - start + 1
-else:
-    count = 0
-
+i = 1
+count = 0
+while i * i <= high:
+    if i * i >= low:
+        count += 1
+    i += 1
 print(count)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
