@@ -161,3 +161,60 @@ while top <= bottom and left <= right:
     if left <= right:
         for i in range(bottom, top-1, -1): print(matrix[i][left], end=" ")
         left += 1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def spiral(matrix):
+    res = []                      # Stores elements in spiral order
+
+    while matrix:                 # Continue until matrix becomes empty
+        res += matrix.pop(0)      # 1️⃣ Remove and add the top row to result
+
+        # 2️⃣ Rotate the remaining matrix 90° counter-clockwise
+        # *matrix       → unpacks rows for zip
+        # zip(*matrix)  → transposes (rows → columns)
+        # list(...)     → converts tuples to list
+        # [::-1]        → reverses rows to complete rotation
+        matrix = list(zip(*matrix))[::-1]
+
+    return res                    # Final spiral order result
+
+
+print(spiral([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]))
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def spiral(matrix):
+    res = []
+    m=[]
+    while matrix:
+        res += matrix.pop(0)
+        matrix = list(zip(*matrix))[::-1]
+        #print(res)
+        #print(matrix)
+    print("in matrix form")
+    n = 3
+    m = []
+    for i in range(0, len(res), n):
+        m.append(res[i:i+n])
+    
+    for row in m:
+        print(row)
+    print()
+    print("in list form")
+    return res
+    n = 3
+    m = []
+    for i in range(0, len(res), n):
+        m.append(res[i:i+n])
+
+    for row in m:
+        print(row)
+print(spiral([
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+    
+]))
+
+
