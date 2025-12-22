@@ -1,8 +1,13 @@
 #Write a Python program to raise a custom exception.
+class MyError(Exception):
+  pass
+
 try:
-  print(a)
-except:
-  print("Error has occured")
+  raise MyError("Custom error occurred")
+except MyError as e :
+  
+    print(e)
+
 
 #Write a Python program to handle multiple exceptions using a single except block
 try:
