@@ -241,21 +241,40 @@ print("Maximum Profit:", profit2)
 
 '''Remove K Digits to Form Smallest Number
 Given a string number, remove k digits to get the smallest possible number.'''
-num = "1432219"
+n = "1432219"
 k = 3
+l = list(n)
+i = 0
+while k > 0 and i < len(l) - 1:
+    if l[i] > l[i + 1]:
+        l.pop(i)
+        k -= 1
+        i = 0
+    else:
+        i += 1
 
-num = list(num)
+while k > 0:
+    l.pop()
+    k -= 1
 
-for _ in range(k):
-    removed = False
-    for i in range(len(num) - 1):
-        if num[i] > num[i + 1]:
-            num.pop(i)        # remove this digit
-            removed = True
-            break
-    if not removed:
-        num.pop()             # remove last digit if no peak found
+print("The smallest number is:")
+for d in l:
+    print(d, end="")
 
-result = "".join(num).lstrip("0")
-print(result if result else "0")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''Least Number of Perfect Squares (Sum = n)
+Return the least number of perfect square numbers that sum to n'''
+import math
+
+n = int(input("Enter a number: "))
+
+# use n+1 as a "big number" instead of float('inf')
+dp = [0] + [n+1] * n
+
+for i in range(1, n+1):
+    for j in range(1, int(math.sqrt(i)) + 1):
+        square = j * j
+        dp[i] = min(dp[i], 1 + dp[i - square])
+
+print("Least number of perfect squares =", dp[n])
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
