@@ -128,19 +128,19 @@ for i in range(len(arr)):
 print("Updated array:", arr)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------'''a program to find the maximum total from top to bottom of a number triangle'''
 '''a program to find the maximum total from top to bottom of a number triangle'''
-triangle = [
+t = [
     [3],
     [7, 4],
     [2, 4, 6],
     [8, 5, 9, 3]
 ]
 
-# Start from the second-last row and move upwards
-for i in range(len(triangle) - 2, -1, -1):
-    for j in range(len(triangle[i])):
-        triangle[i][j] += max(triangle[i + 1][j], triangle[i + 1][j + 1])
+for i in range(len(t) - 2, -1, -1):
+    for j in range(len(t[i])):
+        t[i][j] += max(t[i + 1][j], t[i + 1][j + 1])
 
-print("Maximum total from top to bottom:", triangle[0][0])
+print("Max total:", t[0][0])
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 '''Pyramid:
     1
