@@ -34,6 +34,26 @@ square_of_sum = sum_n ** 2
 sum_of_squares = n * (n + 1) * (2 * n + 1) // 6
 difference = square_of_sum - sum_of_squares
 print("Difference =", difference)
+
+
+n = 200
+
+# Sum of first n numbers using for loop
+sum_n = 0
+for i in range(1, n + 1):
+    sum_n += i
+
+square_of_sum = sum_n ** 2
+
+# Sum of squares using for loop
+sum_of_squares = 0
+for i in range(1, n + 1):
+    sum_of_squares += i ** 2
+
+difference = square_of_sum - sum_of_squares
+
+print("Difference =", difference)
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #sum of rows , col and diagonal
 matrix = [
